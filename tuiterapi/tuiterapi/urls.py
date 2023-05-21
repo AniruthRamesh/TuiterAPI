@@ -16,13 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tweets_app.api import views
+from tweets_app.api import views as tweets_views
+from user_app.api import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/create/tuits', views.create_tuit, name='create_tuit'),
-    path('api/tuits', views.find_tuits, name='find_tuits'),
-    path('api/tuits/<int:tid>', views.update_tuit, name='update_tuit'),
-    path('api/tuits/delete/<int:tid>', views.delete_tuit, name='delete_tuit'),
+    path('api/create/tuits', tweets_views.create_tuit, name='create_tuit'),
+    path('api/tuits', tweets_views.find_tuits, name='find_tuits'),
+    path('api/tuits/<int:tid>', tweets_views.update_tuit, name='update_tuit'),
+    path('api/tuits/delete/<int:tid>', tweets_views.delete_tuit, name='delete_tuit'),
+    path('api/user/create', user_views.create_user, name='create_user'),
+    path('api/user/update/<int:uid>', user_views.update_user, name='update_user'),
 ]
+
 

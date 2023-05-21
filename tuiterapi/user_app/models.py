@@ -9,6 +9,9 @@ class User(models.Model):
     birthdate = models.DateField(blank=True, null=True)
     profile_picture = models.CharField(max_length=255, blank=True, null=True)
     cover_picture = models.CharField(max_length=255, blank=True, null=True)
+    username = models.CharField(default='',max_length=255)
+    email = models.EmailField(default='')
+    password = models.CharField(default='',max_length=255)
 
     class Meta:
         db_table = 'users'
