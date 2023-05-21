@@ -1,5 +1,5 @@
 """
-URL configuration for tuiterapi project.
+URL configuration for TuiterAPI project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from tweets_app.api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/create/tuits', views.create_tuit, name='create_tuit'),
+    path('api/tuits', views.find_tuits, name='find_tuits'),
+    path('api/tuits/<int:tid>', views.update_tuit, name='update_tuit'),
+    path('api/tuits/delete/<int:tid>', views.delete_tuit, name='delete_tuit'),
 ]
+
